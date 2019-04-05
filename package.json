@@ -1,0 +1,8 @@
+{
+    "name": "com.zchfvy.gizmosplus",
+    "displayName": "GizmosPlus",
+    "version": "0.1.0",
+    "unity": "2018.3",
+    "dependencies": {
+    }
+}
