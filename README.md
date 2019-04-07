@@ -23,4 +23,4 @@ GizmosPlus.Cross(transform.position, 1.0f)
 ```
 
 For a complete listing of available methods and their parameters please consult
-the [Documentation](https://raw.githubusercontent.com/zchfvy/GizmosPlus/master/Documentation/html/classZchfvy_1_1Plus_1_1GizmosPlus.html)
+the [Documentation](https://zchfvy.github.io/GizmosPlus/Documentation/html/classZchfvy_1_1Plus_1_1GizmosPlus.html)
