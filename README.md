@@ -1,6 +1,8 @@
 # GizmosPlus
 A toolkit for creating various useful gizmo shapes.
 
+![some gizmos from this package](Images/showcase.png)
+
 
 ## Installation
 
