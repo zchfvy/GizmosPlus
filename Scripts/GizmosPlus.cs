@@ -1,13 +1,14 @@
 using UnityEngine;
 
-namespace GizmosPlus {
+namespace Zchfvy.Plus {
     /// <summary>
     /// Base class for drawing gizmos.
     /// </summary>
-    public static class Draw {
+    public static class GizmosPlus {
         /// <summary>
         /// Creates three intersecting lines on the X,Y,Z axis crossing at a
         /// point.
+        /// @image html cross.png
         /// </summary>
         /// <param name="position">Location in the game world to place the cross.</param>
         /// <param name="size">Size of the cross.</param>
@@ -21,6 +22,7 @@ namespace GizmosPlus {
 
         /// <summary>
         /// Creates a wireframe octahedron at a point in space.
+        /// @image html wireocto.png
         /// </summary>
         /// <param name="position">Location in the game world to place the octahedron.</param>
         /// <param name="size">Size of the octahedron.</param>
@@ -31,6 +33,7 @@ namespace GizmosPlus {
 
         /// <summary>
         /// Creates a solid octahedron at a point in space.
+        /// @image html octo.png
         /// </summary>
         /// <param name="position">Location in the game world to place the octahedron.</param>
         /// <param name="size">Size of the octahedron.</param>
@@ -42,6 +45,7 @@ namespace GizmosPlus {
         /// <summary>
         /// Creates an arrow originating from a point and pointing in a certian
         /// direction with a certain length.
+        /// @image html arrow.png
         /// </summary>
         /// <param name="origin">The point the arrow's base is at.</param>
         /// <param name="dirMagnitude">
@@ -68,6 +72,7 @@ namespace GizmosPlus {
 
         /// <summary>
         /// Construct a square in space
+        /// @image html square.png
         /// </summary>
         /// <param name="origin">The center point of the square</param>
         /// <param name="normalSize">
@@ -86,6 +91,7 @@ namespace GizmosPlus {
 
         /// <summary>
         /// Construct a rectangle in space
+        /// @image html rectangle.png
         /// </summary>
         /// <param name="origin">The center point of the rectangle</param>
         /// <param name="normal"> The normal of the rectangle.</param>
@@ -114,6 +120,7 @@ namespace GizmosPlus {
 
         /// <summary>
         /// Construct a circle in space
+        /// @image html circle.png
         /// </summary>
         /// <param name="origin">The center point of the circle</param>
         /// <param name="normalRadius">
@@ -148,6 +155,7 @@ namespace GizmosPlus {
 
         /// <summary>
         /// Draw a series of connected line segments.
+        /// @image html lines.png
         /// </summary>
         /// <param name="points">The points to draw the segments through</param>
         public static void Lines(Vector3[] points) {
