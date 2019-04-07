@@ -1,13 +1,16 @@
 using UnityEngine;
 
 namespace GizmosPlus {
+    /// <summary>
+    /// Base class for drawing gizmos.
+    /// </summary>
     public static class Draw {
-        ///<summary>
-        ///Creates three intersecting lines on the X,Y,Z axis crossing at a
-        ///point.
-        ///</summary>
-        ///<param name="position">Location in the game world to place the cross.</param>
-        ///<param name="size">Size of the cross.</param>
+        /// <summary>
+        /// Creates three intersecting lines on the X,Y,Z axis crossing at a
+        /// point.
+        /// </summary>
+        /// <param name="position">Location in the game world to place the cross.</param>
+        /// <param name="size">Size of the cross.</param>
         public static void Cross(Vector3 position, float size) {
             float d = size/2.0f;
             Vector3 p = position;
@@ -16,34 +19,34 @@ namespace GizmosPlus {
             Gizmos.DrawLine(p + Vector3.back*d, p + Vector3.forward*d);
         }
 
-        ///<summary>
-        ///Creates a wireframe octahedron at a point in space.
-        ///</summary>
-        ///<param name="position">Location in the game world to place the octahedron.</param>
-        ///<param name="size">Size of the octahedron.</param>
+        /// <summary>
+        /// Creates a wireframe octahedron at a point in space.
+        /// </summary>
+        /// <param name="position">Location in the game world to place the octahedron.</param>
+        /// <param name="size">Size of the octahedron.</param>
         public static void WireOcto(Vector3 position, float size) {
             Gizmos.DrawWireMesh(octahedron, position, Quaternion.identity, Vector3.one * size);
             return;
         }
 
-        ///<summary>
-        ///Creates a solid octahedron at a point in space.
-        ///</summary>
-        ///<param name="position">Location in the game world to place the octahedron.</param>
-        ///<param name="size">Size of the octahedron.</param>
+        /// <summary>
+        /// Creates a solid octahedron at a point in space.
+        /// </summary>
+        /// <param name="position">Location in the game world to place the octahedron.</param>
+        /// <param name="size">Size of the octahedron.</param>
         public static void Octo(Vector3 position, float size) {
             Gizmos.DrawMesh(octahedron, position, Quaternion.identity, Vector3.one * size);
             return;
         }
 
-        ///<summary>
-        ///Creates an arrow originating from a point and pointing in a certian
-        ///direction with a certain length.
-        ///</summary>
-        ///<param name="origin">The point the arrow's base is at.</param>
-        ///<param name="dirMagnitude">
-        ///A vector representing both the direction and length of the arrow.
-        ///</param>
+        /// <summary>
+        /// Creates an arrow originating from a point and pointing in a certian
+        /// direction with a certain length.
+        /// </summary>
+        /// <param name="origin">The point the arrow's base is at.</param>
+        /// <param name="dirMagnitude">
+        /// A vector representing both the direction and length of the arrow.
+        /// </param>
         public static void Arrow(Vector3 origin, Vector3 dirMagnitude) {
                 
             float headSize = 0.1f;
@@ -63,35 +66,35 @@ namespace GizmosPlus {
             Gizmos.DrawLine(arrowBase + up * headSize, arrowBase - up * headSize);
         }
 
-        ///<summary>
-        ///Construct a square in space
-        ///</summary>
-        ///<param name="origin">The center point of the square</param>
-        ///<param name="normalSize">
-        ///The normal and size of the square, each side of the square will have
-        ///a length equivalent to this vector's magnitude.
-        ///</param>
-        ///<param name="crossed">
-        ///Optional, if true a cross will be drawn through opposite borders of
-        ///the square.
-        ///</param>
+        /// <summary>
+        /// Construct a square in space
+        /// </summary>
+        /// <param name="origin">The center point of the square</param>
+        /// <param name="normalSize">
+        /// The normal and size of the square, each side of the square will have
+        /// a length equivalent to this vector's magnitude.
+        /// </param>
+        /// <param name="crossed">
+        /// Optional, if true a cross will be drawn through opposite borders of
+        /// the square.
+        /// </param>
         public static void Square(Vector3 origin, Vector3 normalSize,
                                      bool crossed=false) {
             float size = normalSize.magnitude;
             Rectangle(origin, normalSize, size, size, crossed);
         }
 
-        ///<summary>
-        ///Construct a rectangle in space
-        ///</summary>
-        ///<param name="origin">The center point of the rectangle</param>
-        ///<param name="normal"> The normal of the rectangle.</param>
-        ///<param name="width">The width of the rectangle.</param>
-        ///<param name="height">The height of the rectangle.</param>
-        ///<param name="crossed">
-        ///Optional, if true a cross will be drawn through opposite borders of
-        ///the rectangle.
-        ///</param>
+        /// <summary>
+        /// Construct a rectangle in space
+        /// </summary>
+        /// <param name="origin">The center point of the rectangle</param>
+        /// <param name="normal"> The normal of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="crossed">
+        /// Optional, if true a cross will be drawn through opposite borders of
+        /// the rectangle.
+        /// </param>
         public static void Rectangle(Vector3 origin, Vector3 normal,
                                      float width, float height,
                                      bool crossed=false) {
@@ -109,18 +112,18 @@ namespace GizmosPlus {
             }
         }
 
-        ///<summary>
-        ///Construct a circle in space
-        ///</summary>
-        ///<param name="origin">The center point of the circle</param>
-        ///<param name="normalRadius">
-        ///The normal and radius of the circle, the redius of the circle will be
-        ///equivalent to this vector's magnitude.
-        ///</param>
-        ///<param name="segments">
-        ///Optional, the number of segments to construct the circle out of.
-        ///Defaults to 32.
-        ///</param>
+        /// <summary>
+        /// Construct a circle in space
+        /// </summary>
+        /// <param name="origin">The center point of the circle</param>
+        /// <param name="normalRadius">
+        /// The normal and radius of the circle, the redius of the circle will be
+        /// equivalent to this vector's magnitude.
+        /// </param>
+        /// <param name="segments">
+        /// Optional, the number of segments to construct the circle out of.
+        /// Defaults to 32.
+        /// </param>
         public static void Circle(Vector3 origin, Vector3 normalRadius,
                                   int segments=32) {
 
@@ -143,10 +146,10 @@ namespace GizmosPlus {
             }
         }
 
-        ///<summary>
-        ///Draw a series of connected line segments.
-        ///</summary>
-        ///<param name="points">The points to draw the segments through</param>
+        /// <summary>
+        /// Draw a series of connected line segments.
+        /// </summary>
+        /// <param name="points">The points to draw the segments through</param>
         public static void Lines(Vector3[] points) {
             for (int i = 0; i < points.Length - 1; i++) {
                 Gizmos.DrawLine(points[i], points[i+1]);
