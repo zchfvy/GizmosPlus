@@ -22,25 +22,18 @@ namespace GizmosPlus {
         ///<param name="position">Location in the game world to place the octahedron.</param>
         ///<param name="size">Size of the octahedron.</param>
         public static void WireOcto(Vector3 position, float size) {
-            Vector3 up = Vector3.up;
-            Vector3 left = Vector3.left;
-            Vector3 forward = Vector3.forward;
-            size = size/2.0f;
-            // Top half
-            Gizmos.DrawLine(position + left * size, position + up * size);
-            Gizmos.DrawLine(position + forward * size, position + up * size);
-            Gizmos.DrawLine(position - left * size, position + up * size);
-            Gizmos.DrawLine(position - forward * size, position + up * size);
-            // "Equator"
-            Gizmos.DrawLine(position + left * size, position + forward * size);
-            Gizmos.DrawLine(position + forward * size, position - left * size);
-            Gizmos.DrawLine(position - left * size, position - forward * size);
-            Gizmos.DrawLine(position - forward * size, position + left * size);
-            // Bottom half
-            Gizmos.DrawLine(position + left * size, position - up * size);
-            Gizmos.DrawLine(position + forward * size, position - up * size);
-            Gizmos.DrawLine(position - left * size, position - up * size);
-            Gizmos.DrawLine(position - forward * size, position - up * size);
+            Gizmos.DrawWireMesh(octahedron, position, Quaternion.identity, Vector3.one * size);
+            return;
+        }
+
+        ///<summary>
+        ///Creates a solid octahedron at a point in space.
+        ///</summary>
+        ///<param name="position">Location in the game world to place the octahedron.</param>
+        ///<param name="size">Size of the octahedron.</param>
+        public static void Octo(Vector3 position, float size) {
+            Gizmos.DrawMesh(octahedron, position, Quaternion.identity, Vector3.one * size);
+            return;
         }
 
         ///<summary>
@@ -157,6 +150,99 @@ namespace GizmosPlus {
         public static void Lines(Vector3[] points) {
             for (int i = 0; i < points.Length - 1; i++) {
                 Gizmos.DrawLine(points[i], points[i+1]);
+            }
+        }
+
+        private static Mesh _octahedron = null;
+        private static Mesh octahedron {
+            get {
+                if (_octahedron == null) {
+                    Mesh m = new Mesh();
+
+                    m.SetVertices(new System.Collections.Generic.List<Vector3> {
+                            // F1 : 0 - 2
+                            new Vector3( 0,  1,  0),
+                            new Vector3( 1,  0,  0),
+                            new Vector3( 0,  0,  1),
+                            // F2 : 3 - 5
+                            new Vector3( 0,  1,  0),
+                            new Vector3( 0,  0,  1),
+                            new Vector3(-1,  0,  0),
+                            // F3 : 6 - 8
+                            new Vector3( 0,  1,  0),
+                            new Vector3(-1,  0,  0),
+                            new Vector3( 0,  0, -1),
+                            // F4 : 9 - 11
+                            new Vector3( 0,  1,  0),
+                            new Vector3( 0,  0, -1),
+                            new Vector3( 1,  0,  0),
+                            // F5 : 12 - 14
+                            new Vector3( 0, -1,  0),
+                            new Vector3( 1,  0,  0),
+                            new Vector3( 0,  0,  1),
+                            // F6 : 15 - 17
+                            new Vector3( 0, -1,  0),
+                            new Vector3( 0,  0,  1),
+                            new Vector3(-1,  0,  0),
+                            // F7 : 18 - 20
+                            new Vector3( 0, -1,  0),
+                            new Vector3(-1,  0,  0),
+                            new Vector3( 0,  0, -1),
+                            // F8 : 21 - 23
+                            new Vector3( 0, -1,  0),
+                            new Vector3( 0,  0, -1),
+                            new Vector3( 1,  0,  0),
+                            }); 
+
+                    m.SetNormals(new System.Collections.Generic.List<Vector3> {
+                            // F1 : 0 - 2
+                            new Vector3( 1,  1,  1),
+                            new Vector3( 1,  1,  1),
+                            new Vector3( 1,  1,  1),
+                            // F2 : 3 - 5
+                            new Vector3(-1,  1,  1),
+                            new Vector3(-1,  1,  1),
+                            new Vector3(-1,  1,  1),
+                            // F3 : 6 - 8
+                            new Vector3(-1,  1, -1),
+                            new Vector3(-1,  1, -1),
+                            new Vector3(-1,  1, -1),
+                            // F4 : 9 - 11
+                            new Vector3( 1,  1, -1),
+                            new Vector3( 1,  1, -1),
+                            new Vector3( 1,  1, -1),
+                            // F5 : 12 - 14
+                            new Vector3( 1, -1,  1),
+                            new Vector3( 1, -1,  1),
+                            new Vector3( 1, -1,  1),
+                            // F6 : 15 - 17
+                            new Vector3(-1, -1,  1),
+                            new Vector3(-1, -1,  1),
+                            new Vector3(-1, -1,  1),
+                            // F7 : 18 - 20
+                            new Vector3(-1, -1, -1),
+                            new Vector3(-1, -1, -1),
+                            new Vector3(-1, -1, -1),
+                            // F8 : 21 - 23
+                            new Vector3( 1, -1, -1),
+                            new Vector3( 1, -1, -1),
+                            new Vector3( 1, -1, -1),
+                            });
+
+                    m.SetTriangles(new int[] {
+                            0,  2,  1,
+                            3,  5,  4,
+                            6,  8,  7,
+                            9,  11, 10,
+                            12, 13, 14,
+                            15, 16, 17,
+                            18, 19, 20,
+                            21, 22, 23,
+                            },  0);
+
+                    _octahedron = m;
+                }
+                return _octahedron;
             }
         }
     }
