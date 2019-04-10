@@ -96,6 +96,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a618cbb4235c86832430a8a12a49e2cfc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a618cbb4235c86832430a8a12a49e2cfc">Circle</a> (Vector3 origin, Vector3 normalRadius, int segments=32)</td></tr>
 <tr class="memdesc:a618cbb4235c86832430a8a12a49e2cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a circle in space  <a href="#a618cbb4235c86832430a8a12a49e2cfc">More...</a><br /></td></tr>
 <tr class="separator:a618cbb4235c86832430a8a12a49e2cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d188089a628143601a7013f094ebf55"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a4d188089a628143601a7013f094ebf55">WireCylinder</a> (Vector3 origin, float radius, float height, int segments=16)</td></tr>
+<tr class="memdesc:a4d188089a628143601a7013f094ebf55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a cylinder in space  <a href="#a4d188089a628143601a7013f094ebf55">More...</a><br /></td></tr>
+<tr class="separator:a4d188089a628143601a7013f094ebf55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a689f8db21ff94088fe9f5d9684ba6900"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a689f8db21ff94088fe9f5d9684ba6900">Lines</a> (Vector3[] points)</td></tr>
 <tr class="memdesc:a689f8db21ff94088fe9f5d9684ba6900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a series of connected line segments.  <a href="#a689f8db21ff94088fe9f5d9684ba6900">More...</a><br /></td></tr>
 <tr class="separator:a689f8db21ff94088fe9f5d9684ba6900"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,7 +201,7 @@ Static Public Member Functions</h2></td></tr>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">origin</td><td>The center point of the circle</td></tr>
-    <tr><td class="paramname">normalRadius</td><td>The normal and radius of the circle, the redius of the circle will be equivalent to this vector's magnitude. </td></tr>
+    <tr><td class="paramname">normalRadius</td><td>The normal and radius of the circle, the radius of the circle will be equivalent to this vector's magnitude. </td></tr>
     <tr><td class="paramname">segments</td><td>Optional, the number of segments to construct the circle out of. Defaults to 32. </td></tr>
   </table>
   </dd>
@@ -457,6 +460,68 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">origin</td><td>The center point of the square</td></tr>
     <tr><td class="paramname">normalSize</td><td>The normal and size of the square, each side of the square will have a length equivalent to this vector's magnitude. </td></tr>
     <tr><td class="paramname">crossed</td><td>Optional, if true a cross will be drawn through opposite borders of the square. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4d188089a628143601a7013f094ebf55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d188089a628143601a7013f094ebf55">&#9670;&nbsp;</a></span>WireCylinder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Zchfvy.Plus.GizmosPlus.WireCylinder </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>segments</em> = <code>16</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a cylinder in space </p>
+<div class="image">
+<img src="cylinder.png" alt="cylinder.png"/>
+</div>
+ <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">origin</td><td>The center point of the cylinder</td></tr>
+    <tr><td class="paramname">radius</td><td>The radius of the cylinder.</td></tr>
+    <tr><td class="paramname">height</td><td>The height of the cylinder.</td></tr>
+    <tr><td class="paramname">segments</td><td>Optional, the number of segments to construct the cylinder out of. Defaults to 16. </td></tr>
   </table>
   </dd>
 </dl>
