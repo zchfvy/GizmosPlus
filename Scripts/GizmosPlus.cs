@@ -124,7 +124,7 @@ namespace Zchfvy.Plus {
         /// </summary>
         /// <param name="origin">The center point of the circle</param>
         /// <param name="normalRadius">
-        /// The normal and radius of the circle, the redius of the circle will be
+        /// The normal and radius of the circle, the radius of the circle will be
         /// equivalent to this vector's magnitude.
         /// </param>
         /// <param name="segments">
@@ -150,6 +150,50 @@ namespace Zchfvy.Plus {
                 Gizmos.DrawLine(
                         origin + left * x0 + up * y0,
                         origin + left * x1 + up * y1);
+            }
+        }
+
+        /// <summary>
+        /// Construct a cylinder in space
+        /// @image html cylinder.png
+        /// </summary>
+        /// <param name="origin">The center point of the cylinder</param>
+        /// <param name="radius">The radius of the cylinder.</param>
+        /// <param name="height">The height of the cylinder.</param>
+        /// <param name="segments">
+        /// Optional, the number of segments to construct the cylinder out of.
+        /// Defaults to 16.
+        /// </param>
+        public static void WireCylinder(Vector3 origin, float radius, float height,
+                                        int segments=16) {
+            // Construct by hand each time instead of from mesh because we want
+            // to use a non-tessalated mesh.
+            Vector3 top = origin + Vector3.up * height / 2f;
+            Vector3 bot = origin - Vector3.up * height / 2f;
+
+            for (int i = 0; i < segments; i++) {
+                float theta0 = 2f * Mathf.PI * (float) i / segments;
+                float theta1 = 2f * Mathf.PI * (float) (i+1) / segments;
+
+                float x0 = radius * Mathf.Cos(theta0);
+                float y0 = radius * Mathf.Sin(theta0);
+                float x1 = radius * Mathf.Cos(theta1);
+                float y1 = radius * Mathf.Sin(theta1);
+
+                Vector3 left = Vector3.left;
+                Vector3 fore = Vector3.forward;
+                // Top circle
+                Gizmos.DrawLine(
+                        top + left * x0 + fore * y0,
+                        top + left * x1 + fore * y1);
+                // Bottom circle
+                Gizmos.DrawLine(
+                        bot + left * x0 + fore * y0,
+                        bot + left * x1 + fore * y1);
+                // Sides
+                Gizmos.DrawLine(
+                        top + left * x0 + fore * y0,
+                        bot + left * x0 + fore * y0);
             }
         }
 
