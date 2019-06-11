@@ -61,6 +61,7 @@ namespace Zchfvy.Plus {
             // Shaft
             Gizmos.DrawLine(origin, origin + dirMagnitude);
             // 4 Arrowhead sides
+            headSize *= dirMagnitude.magnitude;
             Gizmos.DrawLine(end, arrowBase + left * headSize);
             Gizmos.DrawLine(end, arrowBase + up * headSize);
             Gizmos.DrawLine(end, arrowBase - left * headSize);
