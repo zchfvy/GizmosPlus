@@ -34,4 +34,4 @@ GizmosPlusAsync.DrawAsync(() => {
 ```
 
 For a complete listing of available methods and their parameters please consult
-the [Documentation](https://zchfvy.github.io/GizmosPlus/Documentation/html/classZchfvy_1_1Plus_1_1GizmosPlus.html)
+the [Documentation](https://zchfvy.github.io/GizmosPlus/Documentation/html/annotated.html)
