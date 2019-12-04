@@ -1,5 +1,7 @@
 # GizmosPlus
-A toolkit for creating various useful gizmo shapes.
+A toolkit for easier Gizmo usage in Unity.
+Contains various commonly used useful shapes and also functionality for
+drawing Gizmos outside of normal OnDrawGizmos flow.
 
 ![some gizmos from this package](Images/showcase.png)
 
@@ -22,6 +24,13 @@ using Zchfvy.Plus
 Then simply call methods out of the `GizmosPlus` class
 ```
 GizmosPlus.Cross(transform.position, 1.0f)
+```
+
+For creating Gizmos outside normal flow use the `GizmosPlusAsync` class
+```
+GizmosPlusAsync.DrawAsync(() => {
+    // Draw Gizmos in here
+});
 ```
 
 For a complete listing of available methods and their parameters please consult
