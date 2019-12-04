@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Zchfvy.Plus {
     /// <summary>
     /// Internal class for use with GizmosPlusAsync
-    /// <see="GizmosPlusAsync">
+    /// See <see cref="GizmosPlusAsync">GizmosPlusAsync</see> for functionality
     /// </summary>
     public class GizmosPlusAsyncDrawer : MonoBehaviour {
         private Queue<Action> drawQueue = new Queue<Action>();
