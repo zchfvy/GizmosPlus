@@ -51,17 +51,28 @@ namespace Zchfvy.Plus {
         /// <param name="dirMagnitude">
         /// A vector representing both the direction and length of the arrow.
         /// </param>
-        public static void Arrow(Vector3 origin, Vector3 dirMagnitude) {
-                
-            float headSize = 0.1f;
+        /// <param name="headSize">
+        /// Arrowhead size, as a fraction of the arrow total size, or as an
+        /// absolute size if absHeadSize is set to true.
+        /// Optional. Default 0.1.
+        /// </param>
+        /// <param name="absHeadSize">
+        /// If set to true, then headSize is treated as an absolute size, if
+        /// false then headSize is a fraction of the toal arrow size.
+        /// </param>
+        public static void Arrow(Vector3 origin, Vector3 dirMagnitude, 
+                                 float headSize = 0.1f, bool absHeadSize = false) {
+            if (!absHeadSize) {
+                headSize *= dirMagnitude.magnitude;
+            }
+
             Vector3 end = origin + dirMagnitude;
-            Vector3 arrowBase = origin + dirMagnitude * (1 - headSize);
             Vector3 left = Vector3.Cross(dirMagnitude, Vector3.up).normalized;
             Vector3 up = Vector3.Cross(left, dirMagnitude).normalized;
             // Shaft
-            Gizmos.DrawLine(origin, origin + dirMagnitude);
+            Gizmos.DrawLine(origin, end);
             // 4 Arrowhead sides
-            headSize *= dirMagnitude.magnitude;
+            Vector3 arrowBase = end - dirMagnitude.normalized * headSize;
             Gizmos.DrawLine(end, arrowBase + left * headSize);
             Gizmos.DrawLine(end, arrowBase + up * headSize);
             Gizmos.DrawLine(end, arrowBase - left * headSize);
