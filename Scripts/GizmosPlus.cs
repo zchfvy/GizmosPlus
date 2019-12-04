@@ -56,7 +56,7 @@ namespace Zchfvy.Plus {
         /// absolute size if absHeadSize is set to true.
         /// Optional. Default 0.1.
         /// </param>
-        /// <param name="headSize">
+        /// <param name="absHeadSize">
         /// If set to true, then headSize is treated as an absolute size, if
         /// false then headSize is a fraction of the toal arrow size.
         /// </param>
