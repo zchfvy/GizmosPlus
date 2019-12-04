@@ -84,9 +84,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa7523c54c25a6ff1e4cc07709fb7e28b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#aa7523c54c25a6ff1e4cc07709fb7e28b">Octo</a> (Vector3 position, float size)</td></tr>
 <tr class="memdesc:aa7523c54c25a6ff1e4cc07709fb7e28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a solid octahedron at a point in space.  <a href="#aa7523c54c25a6ff1e4cc07709fb7e28b">More...</a><br /></td></tr>
 <tr class="separator:aa7523c54c25a6ff1e4cc07709fb7e28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a319ceac039ec654c0ca474e899e84024"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a319ceac039ec654c0ca474e899e84024">Arrow</a> (Vector3 origin, Vector3 dirMagnitude)</td></tr>
-<tr class="memdesc:a319ceac039ec654c0ca474e899e84024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an arrow originating from a point and pointing in a certian direction with a certain length.  <a href="#a319ceac039ec654c0ca474e899e84024">More...</a><br /></td></tr>
-<tr class="separator:a319ceac039ec654c0ca474e899e84024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b19144a98f6e75e6ee6a56c79216ba0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a0b19144a98f6e75e6ee6a56c79216ba0">Arrow</a> (Vector3 origin, Vector3 dirMagnitude, float headSize=0.1f, bool absHeadSize=false)</td></tr>
+<tr class="memdesc:a0b19144a98f6e75e6ee6a56c79216ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an arrow originating from a point and pointing in a certian direction with a certain length.  <a href="#a0b19144a98f6e75e6ee6a56c79216ba0">More...</a><br /></td></tr>
+<tr class="separator:a0b19144a98f6e75e6ee6a56c79216ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8e1076b4c4e6f8bea4421c9a6331dd8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#ab8e1076b4c4e6f8bea4421c9a6331dd8">Square</a> (Vector3 origin, Vector3 normalSize, bool crossed=false)</td></tr>
 <tr class="memdesc:ab8e1076b4c4e6f8bea4421c9a6331dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a square in space  <a href="#ab8e1076b4c4e6f8bea4421c9a6331dd8">More...</a><br /></td></tr>
 <tr class="separator:ab8e1076b4c4e6f8bea4421c9a6331dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,8 +106,8 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for drawing gizmos. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a319ceac039ec654c0ca474e899e84024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a319ceac039ec654c0ca474e899e84024">&#9670;&nbsp;</a></span>Arrow()</h2>
+<a id="a0b19144a98f6e75e6ee6a56c79216ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b19144a98f6e75e6ee6a56c79216ba0">&#9670;&nbsp;</a></span>Arrow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,7 +125,19 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Vector3&#160;</td>
-          <td class="paramname"><em>dirMagnitude</em>&#160;</td>
+          <td class="paramname"><em>dirMagnitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>headSize</em> = <code>0.1f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>absHeadSize</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -148,6 +160,8 @@ Static Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">origin</td><td>The point the arrow's base is at.</td></tr>
     <tr><td class="paramname">dirMagnitude</td><td>A vector representing both the direction and length of the arrow. </td></tr>
+    <tr><td class="paramname">headSize</td><td>Arrowhead size, as a fraction of the arrow total size, or as an absolute size if absHeadSize is set to true. Optional. Default 0.1. </td></tr>
+    <tr><td class="paramname">headSize</td><td>If set to true, then headSize is treated as an absolute size, if false then headSize is a fraction of the toal arrow size. </td></tr>
   </table>
   </dd>
 </dl>
