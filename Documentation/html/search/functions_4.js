@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rectangle',['Rectangle',['../classZchfvy_1_1Plus_1_1GizmosPlus.html#a1eb8ce317114adff0400e94f7312f75e',1,'Zchfvy::Plus::GizmosPlus']]]
+  ['octo',['Octo',['../classZchfvy_1_1Plus_1_1GizmosPlus.html#aa7523c54c25a6ff1e4cc07709fb7e28b',1,'Zchfvy::Plus::GizmosPlus']]]
 ];
