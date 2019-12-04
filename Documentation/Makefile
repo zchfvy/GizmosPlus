@@ -16,3 +16,9 @@ update-gh-pages:
 	git commit -m "Update documentation"
 	git checkout master
 
+push-gh-pages:
+	git checkout gh-pages
+	git push
+	git checkout master
+
+all: rebuild update-gh-pages push-gh-pages
