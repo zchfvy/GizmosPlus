@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Zchfvy.Plus {
@@ -218,6 +219,32 @@ namespace Zchfvy.Plus {
             for (int i = 0; i < points.Length - 1; i++) {
                 Gizmos.DrawLine(points[i], points[i+1]);
             }
+        }
+
+        /// <summary>
+        /// Draw a shaded convex polygon
+        /// @image html polygon.png
+        /// </summary>
+        /// <param name="points">The points of the polygon</param>
+        public static void Polygon(Vector3[] points) {
+            _polygonInner(points);
+            _polygonInner(points.Reverse().ToArray());
+        }
+        private static void _polygonInner(Vector3[] points) {
+            Mesh m = new Mesh();
+            m.SetVertices(points.ToList()); 
+            m.SetNormals(points.Select(p=> Vector3.up).ToList());
+
+            var triList = new System.Collections.Generic.List<int[]>();
+            for (int i = 2; i < points.Length; i++) {
+                triList.Add(new int[]{0, i-1, i});
+            }
+
+            m.SetTriangles(
+                    triList.SelectMany(tl => tl.ToList()).ToArray(),
+                    0);
+
+            Gizmos.DrawMesh(m, Vector3.zero, Quaternion.identity, Vector3.one);
         }
 
         private static Mesh _octahedron = null;
