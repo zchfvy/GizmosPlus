@@ -1,5 +1,7 @@
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace Zchfvy.Plus {
     /// <summary>
@@ -245,6 +247,104 @@ namespace Zchfvy.Plus {
                     0);
 
             Gizmos.DrawMesh(m, Vector3.zero, Quaternion.identity, Vector3.one);
+        }
+
+
+        public enum TextAnchor {
+            Left,
+            Center,
+            Right
+        }
+        /// <summary>
+        /// Draw text in space
+        /// </summary>
+        /// <param name="origin">The point to draw the text from</param>
+        /// <param name="text">The text to draw</param>
+        /// <param name="anchor">How to align the text, default center</param>
+        public static void Text ( Vector3 origin, string text, TextAnchor anchor=TextAnchor.Center) {
+            textViaIcon(origin, text, anchor);
+        }
+
+        // const int TEXT_ATLAS_WIDTH = 15;
+        // const int TEXT_ATLAS_HEIGHT = 7;
+        // const int TEXT_ATLAS_PIXELS = 512;
+        // const int TEXT_CHARACTER_WIDTH = 33;
+        // const int TEXT_CHARACTER_HEIGHT = 72;
+        // const float TEXT_ASPECT_RATIO = 7f / 15f;
+        // const string TEXT_TEXTURE_PATH = "Packages/com.zchfvy.GizmosPlus/Textures/TextAtlas.png";
+        // private static Texture textTexture;
+        // private static void textViaGuiTexture(Vector3 origin, string text, float size) {
+        //     // load texture
+        //     if (textTexture == null) {
+        //         // TODO : load in static constructor
+        //         textTexture = AssetDatabase.LoadAssetAtPath(TEXT_TEXTURE_PATH, typeof(Texture2D)) as Texture2D;
+        //     }
+
+        //     var point = Camera.current.WorldToScreenPoint(origin);
+        //     float x = point.x;
+        //     float y = point.y;
+        //     for (int i = 0; i < text.Length; i++) {
+        //         int c = (int)text[i];
+        //         if (c < 32 || c > 126) {
+        //             // We have an unprintable character, set it to
+        //             // The "REPLACEMENT CHARACTER"
+        //             c = 127;
+        //         }
+        //         int val = c-31; // ASCII offset for skipping unprintables
+        //         int c_ox = val % TEXT_ATLAS_WIDTH;
+        //         int c_oy = (int)(val / TEXT_ATLAS_WIDTH);
+
+        //         int tx_ox = c_ox * TEXT_CHARACTER_WIDTH;
+        //         int tx_oy = c_oy * TEXT_CHARACTER_HEIGHT;
+
+        //         Gizmos.DrawGUITexture(
+        //                 new Rect(x, y, size*TEXT_ASPECT_RATIO, size),
+        //                 textTexture,
+        //                 tx_ox,
+        //                 tx_oy,
+        //                 TEXT_ATLAS_PIXELS + TEXT_CHARACTER_WIDTH - tx_ox,
+        //                 TEXT_ATLAS_PIXELS + TEXT_CHARACTER_HEIGHT - tx_oy);
+
+
+        //     }
+        // }
+
+        const int CHAR_WORLD_OFFSET = 16;
+        const string TEXT_ICONS_ROOT = "Packages/com.zchfvy.GizmosPlus/Textures/";
+        private static Dictionary<int,string> textureIcons;
+        private const string VALID_CHARS = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+        private static void textViaIcon(Vector3 origin, string text, TextAnchor anchor) {
+            // load texture
+            if (textureIcons == null) {
+                textureIcons = new Dictionary<int, string>();
+                int idx = 0;
+                foreach (char c in VALID_CHARS) {
+                    textureIcons.Add(idx, TEXT_ICONS_ROOT + idx + ".png");
+                    idx++;
+                }
+            }
+
+            var screenBase = Camera.current.WorldToScreenPoint(origin);
+            float offset = 0;
+            if (anchor == TextAnchor.Center) {
+                offset = (float)text.Length * -0.5f;
+            }
+            else if (anchor == TextAnchor.Right) {
+                offset = (float)text.Length * -1.0f;
+            }
+            for (int i = 0; i < text.Length; i++) {
+                int c = (int)text[i];
+                if (c < 32 || c > 126) {
+                    // We have an unprintable character, set it to
+                    // The "REPLACEMENT CHARACTER"
+                    c = 127;
+                }
+                int val = c-32; // ASCII offset for skipping unprintables
+                var screenPoint = screenBase + Vector3.right * offset * CHAR_WORLD_OFFSET;
+                var worldPoint = Camera.current.ScreenToWorldPoint(screenPoint);
+                Gizmos.DrawIcon(worldPoint, textureIcons[val], false);
+                offset += 1;
+            }
         }
 
         private static Mesh _octahedron = null;
