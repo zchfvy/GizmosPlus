@@ -10,24 +10,24 @@ drawing Gizmos outside of normal OnDrawGizmos flow.
 
 Simply open your `manifest.json` file located in the `Packages` folder of your
 unity project and add the follwing line to thel ist of `dependencies`:
-```
+```json
 "com.zchfvy.gizmosplus": "https://github.com/zchfvy/GizmosPlus.git"
 ```
 
 ## Usage
 
 At the top of your file use the Plus namespace
-```
+```c#
 using Zchfvy.Plus
 ```
 
 Then simply call methods out of the `GizmosPlus` class
-```
+```c#
 GizmosPlus.Cross(transform.position, 1.0f)
 ```
 
 For creating Gizmos outside normal flow use the `GizmosPlusAsync` class
-```
+```c#
 GizmosPlusAsync.DrawAsync(() => {
     // Draw Gizmos in here
 });
