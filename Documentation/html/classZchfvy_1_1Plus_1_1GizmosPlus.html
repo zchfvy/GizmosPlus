@@ -63,6 +63,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classZchfvy_1_1Plus_1_1GizmosPlus-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -73,6 +74,14 @@ $(function() {
 <p>Base class for drawing gizmos.  
  <a href="classZchfvy_1_1Plus_1_1GizmosPlus.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a47d1a61cba25be7d6705733c54992085"><td class="memItemLeft" align="right" valign="top"><a id="a47d1a61cba25be7d6705733c54992085"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>TextAnchor</b> { <b>Left</b>, 
+<b>Center</b>, 
+<b>Right</b>
+ }</td></tr>
+<tr class="separator:a47d1a61cba25be7d6705733c54992085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5264f090d657df077ed7a83c080c7e52"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a5264f090d657df077ed7a83c080c7e52">Cross</a> (Vector3 position, float size)</td></tr>
@@ -105,6 +114,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae7aef08a894554fb76f5eecf3d76c81c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#ae7aef08a894554fb76f5eecf3d76c81c">Polygon</a> (Vector3[] points)</td></tr>
 <tr class="memdesc:ae7aef08a894554fb76f5eecf3d76c81c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a shaded convex polygon  <a href="#ae7aef08a894554fb76f5eecf3d76c81c">More...</a><br /></td></tr>
 <tr class="separator:ae7aef08a894554fb76f5eecf3d76c81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ded4afa5734c81c3b2695ff2e030c6c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classZchfvy_1_1Plus_1_1GizmosPlus.html#a6ded4afa5734c81c3b2695ff2e030c6c">Text</a> (Vector3 origin, string text, TextAnchor anchor=TextAnchor.Center)</td></tr>
+<tr class="memdesc:a6ded4afa5734c81c3b2695ff2e030c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw text in space  <a href="#a6ded4afa5734c81c3b2695ff2e030c6c">More...</a><br /></td></tr>
+<tr class="separator:a6ded4afa5734c81c3b2695ff2e030c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for drawing gizmos. </p>
@@ -514,6 +526,58 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">origin</td><td>The center point of the square</td></tr>
     <tr><td class="paramname">normalSize</td><td>The normal and size of the square, each side of the square will have a length equivalent to this vector's magnitude. </td></tr>
     <tr><td class="paramname">crossed</td><td>Optional, if true a cross will be drawn through opposite borders of the square. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6ded4afa5734c81c3b2695ff2e030c6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ded4afa5734c81c3b2695ff2e030c6c">&#9670;&nbsp;</a></span>Text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Zchfvy.Plus.GizmosPlus.Text </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TextAnchor&#160;</td>
+          <td class="paramname"><em>anchor</em> = <code>TextAnchor.Center</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw text in space </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">origin</td><td>The point to draw the text from</td></tr>
+    <tr><td class="paramname">text</td><td>The text to draw</td></tr>
+    <tr><td class="paramname">anchor</td><td>How to align the text, default center</td></tr>
   </table>
   </dd>
 </dl>
