@@ -1,3 +1,6 @@
+[![openupm](https://img.shields.io/npm/v/com.zchfvy.gizmosplus?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.zchfvy.gizmosplus/)
+
+
 # GizmosPlus
 A toolkit for easier Gizmo usage in Unity.
 Contains various commonly used useful shapes and also functionality for
@@ -8,8 +11,21 @@ drawing Gizmos outside of normal OnDrawGizmos flow.
 
 ## Installation
 
-Simply open your `manifest.json` file located in the `Packages` folder of your
-unity project and add the follwing line to thel ist of `dependencies`:
+### Via OpenUPM
+
+This package is available on the [OpenUPM registry](https://openupm.com). You
+can install it form there using
+[openupm-cli](https://github.com/openupm/openupm-cli):
+
+```
+openupm add com.zchfvy.gizmosplus
+```
+
+### Via git
+
+Alternatively, this can be isntalled directly from github.Simply open your
+`manifest.json` file located in the `Packages` folder of your unity project and
+add the follwing line to the list of `dependencies`:
 ```json
 "com.zchfvy.gizmosplus": "https://github.com/zchfvy/GizmosPlus.git"
 ```
