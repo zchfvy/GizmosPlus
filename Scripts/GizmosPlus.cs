@@ -70,8 +70,7 @@ namespace Zchfvy.Plus {
             }
 
             Vector3 end = origin + dirMagnitude;
-            Vector3 left = Vector3.Cross(dirMagnitude, Vector3.up).normalized;
-            Vector3 up = Vector3.Cross(left, dirMagnitude).normalized;
+            var (left, up) = GetComponentsFromNormal(dirMagnitude);
             // Shaft
             Gizmos.DrawLine(origin, end);
             // 4 Arrowhead sides
@@ -119,8 +118,7 @@ namespace Zchfvy.Plus {
         public static void Rectangle(Vector3 origin, Vector3 normal,
                                      float width, float height,
                                      bool crossed=false) {
-            Vector3 left = Vector3.Cross(normal, Vector3.up).normalized;
-            Vector3 up = Vector3.Cross(left, normal).normalized;
+            var (left, up) = GetComponentsFromNormal(normal);
 
             Gizmos.DrawLine(origin + up * height + left * width, origin + up * height - left * width);
             Gizmos.DrawLine(origin + up * height - left * width, origin - up * height - left * width);
@@ -148,9 +146,7 @@ namespace Zchfvy.Plus {
         /// </param>
         public static void Circle(Vector3 origin, Vector3 normalRadius,
                                   int segments=32) {
-
-            Vector3 left = Vector3.Cross(normalRadius, Vector3.up).normalized;
-            Vector3 up = Vector3.Cross(left, normalRadius).normalized;
+            var (left, up) = GetComponentsFromNormal(normalRadius);
             float radius = normalRadius.magnitude;
 
             for (int i = 0; i < segments; i++) {
@@ -249,6 +245,34 @@ namespace Zchfvy.Plus {
             Gizmos.DrawMesh(m, Vector3.zero, Quaternion.identity, Vector3.one);
         }
 
+        /// <summary>
+        /// Calculates the component left and up vectors in the plane perpendicular to the
+        /// specified normal.
+        /// </summary>
+        ///
+        /// <param name="normal">A normalized vector perpendicular to the desired plane.</param>
+        ///
+        /// <returns>
+        /// A pair of vectors perpendicular to each other and contained within the plain
+        /// that is perpendicular to the given normal vector.
+        /// </returns>
+        private static (Vector3 left, Vector3 up) GetComponentsFromNormal(Vector3 normal) {
+            Vector3 left = Vector3.Cross(normal, Vector3.up).normalized;
+            Vector3 up = Vector3.Cross(left, normal).normalized;
+
+            // Handle the case where the normal is directly up or down. In that case the
+            // cross product used to calculate the left and up vectors will be 0-length,
+            // causing the circle to not draw correctly. To avoid this, we manually
+            // specify the left and up vectors so that the circle will draw correctly in
+            // the X-Z plane.
+            if (Mathf.Approximately(left.sqrMagnitude, 0f))
+            {
+                left = Vector3.left;
+                up = Vector3.forward;
+            }
+
+            return (left, up);
+        }
 
         public enum TextAnchor {
             Left,
