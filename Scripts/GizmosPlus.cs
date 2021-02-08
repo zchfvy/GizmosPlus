@@ -151,6 +151,18 @@ namespace Zchfvy.Plus {
 
             Vector3 left = Vector3.Cross(normalRadius, Vector3.up).normalized;
             Vector3 up = Vector3.Cross(left, normalRadius).normalized;
+
+            // Handle the case where the normal is directly up or down. In that case the
+            // cross product used to calculate the left and up vectors will be 0-length,
+            // causing the circle to not draw correctly. To avoid this, we manually
+            // specify the left and up vectors so that the circle will draw correctly in
+            // the X-Z plane.
+            if (Mathf.Approximately(left.sqrMagnitude, 0f))
+            {
+                left = Vector3.left;
+                up = Vector3.forward;
+            }
+
             float radius = normalRadius.magnitude;
 
             for (int i = 0; i < segments; i++) {
