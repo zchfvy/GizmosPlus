@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -8,6 +7,16 @@ namespace Zchfvy.Plus {
     /// </summary>
     public static class GizmosPlusAsync {
         private static GizmosPlusAsyncDrawer drawer;
+
+        private static GizmosPlusAsyncDrawer GetOrCreateDrawer() {
+            if (drawer == null) {
+                var go = new GameObject("_GizmosPlusAsyncDrawer");
+                drawer = go.AddComponent<GizmosPlusAsyncDrawer>();
+            }
+
+            return drawer;
+        }
+
         /// <summary>
         /// Allows drawing of Gizmos outside of OnDrawGizmos flow
         /// </summary>
@@ -24,11 +33,15 @@ namespace Zchfvy.Plus {
         /// </code>
         /// </example>
         public static void DrawAsync(Action drawFunc) {
-            if (drawer == null) {
-                var go = new GameObject("_GizmosPlusAsyncDrawer");
-                drawer = go.AddComponent<GizmosPlusAsyncDrawer>();
-            }
-            drawer.Enqueue(drawFunc);
+            GetOrCreateDrawer().Enqueue(drawFunc);
+        }
+
+        public static void DrawSelectedAsync(this GameObject gameObject, Action drawFunc) {
+            GetOrCreateDrawer().EnqueueSelected(gameObject, drawFunc);
+        }
+
+        public static void DrawSelectedAsync<T>(this T component, Action drawFunc) where T : Component {
+            DrawSelectedAsync(component.gameObject, drawFunc);
         }
     }
 }
